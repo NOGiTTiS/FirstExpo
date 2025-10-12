@@ -8,9 +8,9 @@ const MyStyle = StyleSheet.create({
         justifyContent: 'center',
     },
     text: {
-        fontSize: 24,
+        fontSize: 16,
         color: '#fff',
-        margin: 10,
+        margin: 2,
     }
 })
 
