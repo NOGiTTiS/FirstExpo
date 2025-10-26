@@ -1,11 +1,11 @@
-import { Alert, Button, Image, Modal, SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, TouchableHighlight, TouchableNativeFeedback, TouchableOpacity, View } from 'react-native'
+import { Button, ScrollView, StyleSheet, TouchableOpacity, Text, View, TouchableHighlight, TouchableWithoutFeedback, Image, Alert, Modal, StatusBar, SafeAreaView, SafeAreaViewBase } from 'react-native'
 import { useState } from 'react'
+import React from 'react'
 import MyStyle from '@/constants/Style'
 import About from '@/components/About'
 import { Link, useRouter } from 'expo-router'
 
-import KiwiProfile from '@/assets/images/2.jpg'
-import SwitchDemo from './../switchdemo';
+import KiwiProfile from '@/assets/images/1.jpg'
 
 export default function Index() {
     const router = useRouter()
@@ -13,41 +13,40 @@ export default function Index() {
     // สร้างฟังก์ชันแสดง alert
     const showAlert = () => {
         Alert.alert(
-            'Alert Title', 
-            'This is the alert message.', 
+            'แจ้งเตือน',
+            'Lorem ipsum dolor sit amet.',
             [
                 {
-                    text: 'Cancel', // ปุ่มยกเลิก
+                    text: 'ยกเลิก',
                     onPress: () => console.log('Cancel Pressed'),
                     style: 'cancel'
                 },
                 {
-                    text: 'OK', // ปุ่มตกลง
-                    onPress: () => console.log('OK Pressed'),
+                    text: 'ตกลง',
+                    onPress: () => console.log('OK Pressed')
                 },
                 {
-                    text: 'Yes', // ปุ่มเพิ่มเติม
-                    onPress: () => console.log('Yes Pressed'),
+                    text: 'ใช่',
+                    onPress: () => console.log('Yes Pressed')
                 }
             ],
-            { cancelable: false } // ไม่อนุญาตให้ปิด alert โดยการแตะนอกกล่อง
+            { cancelable: false }
         )
     }
 
-    // สร้าง state สำหรับการแสดง Modal
     const [modalVisible, setModalVisible] = useState(false)
 
     return (
-        <SafeAreaView style={{flex: 1}}>
+        <SafeAreaView style={{flex:1}}>
             <ScrollView>
                 <View style={styles.container}>
 
                     <StatusBar
-                        // backgroundColor="#1387f4ff"
-                        // barStyle='light-content'
-                        backgroundColor="transparent"
+                        // backgroundColor="#8a47ffff"
+                        // barStyle="dark-content"
+                        backgroundColor="tansparent"
                         translucent={true}
-                        barStyle="dark-content"
+                        barStyle="light-content"
                     />
 
                     <Text style={[styles.text, { fontSize: 40, fontWeight: 'bold', textAlign: 'center' }]}>Expo App</Text>
@@ -113,79 +112,74 @@ export default function Index() {
                     <TouchableOpacity
                         activeOpacity={0.5}
                         style={{
-                            backgroundColor: '#33cc33',
+                            backgroundColor: '#4a33ccff',
                             paddingVertical: 20,
                             borderRadius: 5,
                         }}
-                        onPress={() => {
+                        onPress={()=>{
                             console.log('TouchableOpacity Clicked')
-                        }}    
+                        }}
                     >
-                        <Text style={{color:'white',textAlign:'center'}}>Touchable Opacity</Text>
+                        <Text style={{color:'white', textAlign: 'center' }}>TouchableOpacity Button</Text>
                     </TouchableOpacity>
 
                     <Text style={[styles.text, { textAlign: 'center' }]}>การใช้ TouchableHilight</Text>
                     <TouchableHighlight
-                        underlayColor="#ff3300"
+                        underlayColor="#ff33ddff"
                         style={{
-                            backgroundColor: '#6200ffff',
+                            backgroundColor: '#3396ccff',
                             paddingVertical: 20,
                             borderRadius: 5,
                         }}
-                        onPress={() => {
+                        onPress={()=>{
                             console.log('TouchableHighlight Clicked')
-                        }}    
+                        }}
                     >
-                        <Text style={{color:'white',textAlign:'center'}}>Touchable Hilight</Text>
+                        <Text style={{color:'white', textAlign: 'center' }}>TouchableHighlight Button</Text >
 
                     </TouchableHighlight>
 
-                    <Text style={[styles.text, { textAlign: 'center' }]}>การใช้ TouchableWithoutFeedback</Text>
-                    <TouchableNativeFeedback
-                        onPress={() => {
-                            console.log('TouchableWithoutFeedback Clicked')
+                    <Text style={[styles.text, { textAlign: 'center' }]}>การใช้ Touchable Without Feedback</Text>
+                    <TouchableWithoutFeedback
+                        onPress={()=>{
+                            console.log('Touchable Without Feedback Clicked')
                         }}
                     >
-                        <Text style={{color:'white',textAlign:'center'}}>Touchable Without Feedback</Text>
+                        <Text style={{color:'white', textAlign: 'center' }}>Touchable Without Feedback Button</Text >
+                    </TouchableWithoutFeedback>
 
-                    </TouchableNativeFeedback>
-
-                    <Text style={[styles.text, { textAlign: 'center' }]}>การใช้ Image จาก Assets</Text>
+                    <Text style={[styles.text, { textAlign: 'center' }]}>การใช้ Image จาก assets</Text>
                     <Image
-                        source={require('@/assets/images/1.jpg')}
-                        style={{width: 120, height: 120, borderRadius: 60, marginHorizontal: 'auto'}}
+                        source={require('@/assets/images/2.jpg')}
+                        style={{ width: 120, height: 120, borderRadius: 60, marginHorizontal: 'auto' }}
                         resizeMode='cover'
                     />
-
-                    <Text style={[styles.text, { textAlign: 'center' }]}>การใช้ Image จาก Assets แบบ Import</Text>
+                    <Text style={[styles.text, { textAlign: 'center' }]}>การใช้ Image จาก assets แบบ Import</Text>
                     <Image
                         source={KiwiProfile}
-                        style={{width: 120, height: 120, borderRadius: 60, marginHorizontal: 'auto'}}
+                        style={{ width: 120, height: 120, borderRadius: 60, marginHorizontal: 'auto' }}
                         resizeMode='cover'
                     />
-
                     <Text style={[styles.text, { textAlign: 'center' }]}>การใช้ Image จาก URL</Text>
                     <Image
-                        source={{uri: 'https://brms.krusittigon.in.th/uploads/logos/68b465d8eb94a2.97082346.png'}}
-                        style={{width: 120, height: 120, borderRadius: 60, marginHorizontal: 'auto'}}
+                        source={{ uri: 'https://cdn.pixabay.com/photo/2024/06/30/10/28/sky-8862862_1280.png'}}
+                        style={{ width: 300, height: 200, borderRadius: 0, marginHorizontal: 'auto' }}
                         resizeMode='cover'
                     />
 
                     <Text style={[styles.text, { textAlign: 'center' }]}>การใช้ Alert</Text>
                     <TouchableHighlight
-                        underlayColor="#aeff00ff"
+                        underlayColor="#ff33ddff"
                         style={{
-                            backgroundColor: '#00d5ffff',
+                            backgroundColor: '#3396ccff',
                             paddingVertical: 20,
-                            justifyContent: 'center',
-                            alignItems: 'center',
                             borderRadius: 5,
                         }}
-                        onPress={() => {
+                        onPress={()=>{
                             showAlert()
-                        }}    
+                        }}
                     >
-                        <Text style={{color:'white'}}>Show Alert</Text>
+                        <Text style={{color:'white', textAlign: 'center' }}>Show Alert</Text >
 
                     </TouchableHighlight>
 
@@ -199,7 +193,7 @@ export default function Index() {
                     >
                         <View style={{flex: 1, backgroundColor: '#000000aa', justifyContent: 'center', alignItems: 'center'}}>
                             <View style={{width: 300, backgroundColor: '#ffffff',borderRadius: 10,padding: 20, alignItems: 'center'}}>
-                                <Text style={{ marginBottom: 20}}>Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+                                <Text style={{ marginBottom: 20}}>Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                                     Facilis possimus non quo nulla nostrum reprehenderit.
                                 </Text>
                             <View style={{flexDirection: 'row', justifyContent: 'space-evenly',width: 300 }}>
@@ -221,75 +215,75 @@ export default function Index() {
                     </Modal>
 
                     <TouchableHighlight
-                        underlayColor="#1900ffff"
+                        underlayColor="#ff33ddff"
                         style={{
-                            backgroundColor: '#ea00ffff',
+                            backgroundColor: '#3396ccff',
                             paddingVertical: 20,
+                            borderRadius: 5,
                             justifyContent: 'center',
                             alignItems: 'center',
-                            borderRadius: 5,
                         }}
-                        onPress={() => {
+                        onPress={()=>{
                             setModalVisible(true)
-                        }}    
+                        }}
                     >
-                        <Text style={{color:'white'}}>Show Modal</Text>
+                        <Text style={{color:'white', textAlign: 'center' }}>Show Modal</Text >
 
-                    </TouchableHighlight>
+                    </TouchableHighlight>      
 
                     <Text style={[styles.text, { textAlign: 'center' }]}>การใช้ Text Input</Text>
                     <TouchableHighlight
-                        underlayColor="#00ff84ff"
+                        underlayColor="#ff33ddff"
                         style={{
-                            backgroundColor: '#0008ffff',
+                            backgroundColor: '#3396ccff',
                             paddingVertical: 20,
                             justifyContent: 'center',
                             alignItems: 'center',
                             borderRadius: 5,
                         }}
-                        onPress={() => {
-                            router.push('/textinputdemo')
-                        }}    
+                        onPress={()=>{
+                            router.push('/textinputdemo') 
+                        }}
                     >
-                        <Text style={{color:'white'}}>Open Form</Text>
+                        <Text style={{color:'white', textAlign: 'center' }}>Open Form</Text >
 
-                    </TouchableHighlight>
+                    </TouchableHighlight>          
 
                     <Text style={[styles.text, { textAlign: 'center' }]}>การใช้ Switch</Text>
                     <TouchableHighlight
-                        underlayColor="#00ff84ff"
+                        underlayColor="#ff33ddff"
                         style={{
-                            backgroundColor: '#0008ffff',
+                            backgroundColor: '#3396ccff',
                             paddingVertical: 20,
                             justifyContent: 'center',
                             alignItems: 'center',
                             borderRadius: 5,
                         }}
-                        onPress={() => {
-                            router.push('/switchdemo')
-                        }}    
+                        onPress={()=>{
+                            router.push('/switchdemo') 
+                        }}
                     >
-                        <Text style={{color:'white'}}>Switch Demo</Text>
+                        <Text style={{color:'white', textAlign: 'center' }}>Switch Demo</Text >
 
-                    </TouchableHighlight>
+                    </TouchableHighlight>  
 
                     <Text style={[styles.text, { textAlign: 'center' }]}>การใช้ Flatlist</Text>
                     <TouchableHighlight
-                        underlayColor="#00ff84ff"
+                        underlayColor="#ff33ddff"
                         style={{
-                            backgroundColor: '#0008ffff',
+                            backgroundColor: '#3396ccff',
                             paddingVertical: 20,
                             justifyContent: 'center',
                             alignItems: 'center',
                             borderRadius: 5,
                         }}
-                        onPress={() => {
-                            router.push('/flatlistdemo')
-                        }}    
+                        onPress={()=>{
+                            router.push('/flatlistdemo') 
+                        }}
                     >
-                        <Text style={{color:'white'}}>Open FlatList Page</Text>
+                        <Text style={{color:'white', textAlign: 'center' }}>Flatlist Demo</Text >
 
-                    </TouchableHighlight>
+                    </TouchableHighlight>          
 
                 </View>
             </ScrollView>

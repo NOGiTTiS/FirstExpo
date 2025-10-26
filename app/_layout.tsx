@@ -12,9 +12,9 @@ export default function RootLayout() {
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
             <Stack.Screen name="index" options={{ title: 'Home', headerShown: false }} />
             <Stack.Screen name="contact" options={{ title: 'Contact us' }} />
-            <Stack.Screen name="textinputdemo" options={{ title: 'Form Simple', headerShown: true  }} />
-            <Stack.Screen name="switchdemo" options={{ title: 'Switch Demo', headerShown: true  }} />
-            <Stack.Screen name="flatlistdemo" options={{ title: 'Flatlist Demo', headerShown: true  }} />
+            <Stack.Screen name="textinputdemo" options={{ title: 'Simple Form', headerShown: true }} />
+            <Stack.Screen name="switchdemo" options={{ title: 'Switch Demo', headerShown: true }} />
+            <Stack.Screen name="flatlistdemo" options={{ title: 'Flat List Demo', headerShown: true }} />
         </Stack>
     )
 }

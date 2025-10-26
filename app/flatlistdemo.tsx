@@ -1,9 +1,8 @@
-import React from "react"
-import { StyleSheet, Text, View, Image, FlatList } from "react-native"
+import React from 'react'
+import { FlatList, Image, StyleSheet, Text, View } from 'react-native'
 
 export default function FlatListDemo() {
-  // ข้อมูลชุดที่ใช้ใน FlatList
-  const data = [
+    const data = [
     {
       id: 1,
       name: "Workshop Python Django 5 with Next.JS 15 and Supabase",
